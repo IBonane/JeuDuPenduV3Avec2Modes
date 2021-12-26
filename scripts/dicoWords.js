@@ -27,4 +27,7 @@ var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p',
 
 
 var canvaDuPendus = ['support', 'tete', 'corps', 'bras', 'jambes'];
-var nameWinnerCompute = ['Amazon-Machine', 'Apple-Machine', 'Microsoft-Machine', 'Google-Machine', 'Facebook-Machine'];
+
+var nameWinnerCompute = ['Amazon', 'Apple', 'Microsoft',
+                         'IBM', 'SuperComputer', 'Tesla',
+                         'Google', 'Facebook', 'MetaVerse'];

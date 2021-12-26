@@ -1,6 +1,5 @@
 //desactivation du div input and winnerDiv
 const hideDiv = () =>{
-    $("#nameWinnerInputDiv").show();
     $("#simpleWinner").hide();
     $("#bestWinner").hide();
 }
@@ -56,13 +55,13 @@ function playerWin(){
     this.time=10000;
 } 
 
-const initBestPlayerArray = () =>{  
+const initBestPlayerArray = (size) =>{  
     bestPlayer = [];
     //initialisation du tableau
-    for (let i=0;i<5;i++)     
+    for (let i=0;i<size;i++)     
         bestPlayer[i] = new playerWin();
 
-    console.log(bestPlayer);
+    //console.log(bestPlayer);
 }
 
 //////////////////////////////////////////////////////////////
@@ -70,7 +69,7 @@ const initBestPlayerArray = () =>{
 const initWord = (word, wordHidden) =>{
     for(let index=0; index < word.length; index++)
     wordHidden[index]= "_";
-    console.log(wordCompute.join(" "));
+    console.log(wordHidden.join(" "));
 }
 
 ///////////////////////////////////////////////////
@@ -85,23 +84,22 @@ const hideAndInit = (nbChangeValue, wordArray, randomWordOrLetter) =>{
      //countLetter = 0;
      randomWordOrLetter="";
      nbPenality = 0;
-     console.log("word utili : "+wordCompute);
+     //console.log("word utili : "+wordCompute);
          
      $("#message").html('<h4>'+'nombre de coup : '+nbChange+'</h4>');
  
-     $("#hiddenWord").text(wordCompute.join(" "));
+     $("#hiddenWord").text(wordArray.join(" "));
 }
 
 //sous fonction de verification : parcour des lettres du mots a trouvé
-const checkLettersWordHidden = (randomWordOrLetter, word) =>{
+const checkLettersWordHidden = (letter, wordRandomOrUser, word) =>{
     lettreOk = false;
-    for(let index=0; index < wordUser.length; index++){
-        if(randomWordOrLetter == word[index]){
-            // letterWinDisable.css("background-color", "green");
-            console.log("index : "+index+" : "+word[index]);
-            wordCompute[index] = word[index];
+    for(let index=0; index < wordRandomOrUser.length; index++){
+        if(letter == wordRandomOrUser[index]){
+            console.log("index : "+index+" : "+wordRandomOrUser[index]);
+            word[index] = wordRandomOrUser[index];
             lettreOk = true;
-            $("#hiddenWord").text(wordCompute.join(" "));
+            $("#hiddenWord").text(word.join(" "));
         }           
     }
 
@@ -113,6 +111,60 @@ const checkLettersWordHidden = (randomWordOrLetter, word) =>{
         console.log("nb change "+nbChange);
         $("#message").html('<h4>'+'nombre de coup : '+nbChange+'</h4>');
     }
-    console.log("user word "+wordCompute.join(" "));
+    console.log("user word "+word.join(" "));
     statuJeu();   
 }
+
+///////////////////////////////////////////
+ //fin du temps de jeu et calcul du temps de jeu du vainqueur
+ const getTimePlayer = () =>{
+    timePlaying = Math.round((new Date() - beginGameTime.getTime())/1000);
+ }
+//Hide pendu image
+const hidePendu = () =>{
+    $("#penduLost").hide();
+}
+
+//put timePlaying and penality in Array
+const timePlayingAndPenality = (size)=>{
+    bestPlayer[size].penality = nbPenality;
+    bestPlayer[size].time = timePlaying;
+}
+
+//trie du tableau
+const sortArray = ()=>{
+
+    bestPlayer.sort(function(a, b){
+        if(a.penality == b.penality)
+            return a.time - b.time;
+        return a.penality - b.penality;
+    });
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+const displayBestWinner = ()=>{
+    //affichage du tableau des 10 meilleurs scores
+    for(let i=0; i<bestPlayer.length; i++)
+        if(bestPlayer[i].name !="")
+            $("#tr"+i).html('<td>'+(i+1)+'</td><td>'+bestPlayer[i].name+'</td><td>'+bestPlayer[i].penality+'</td><td>'+bestPlayer[i].time+'</td>'); 
+}
+
+//////////////////////////////////////////////////////////
+//init loacl storage
+const initLocalStorage = () =>{
+    localStorage["savePerson"] = JSON.stringify(bestPlayer); 
+}
+
+//chargement du tableau meilleurs
+const loadStorageArray = () =>{
+    if(localStorage["savePerson"]!=undefined){
+        bestPlayer = JSON.parse(localStorage["savePerson"]);
+        displayBestWinner();
+    }
+}
+
+//////////////////////////////////////////////////////////////
+//rechargement de la page
+// $("#play").click(function(){
+//     location.reload(true);
+// });
