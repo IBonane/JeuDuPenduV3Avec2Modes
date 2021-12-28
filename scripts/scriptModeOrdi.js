@@ -27,8 +27,8 @@ generateTableWinner(size);
 //////////////////////////////////////////////////////////////
 //programme principal
 $(document).ready(function(){
-    //1)init : $(".hideCanva").hide(), nbChange, wordUser or wordCompute (wordArray), motRandom or letterRandom (random), 
-    //2)nbPenality, message html of nbChange ($("#message").html('<h4>'+'nombre de coup : '+nbChange+'</h4>'))
+    //1)init : $(".hideCanva").hide(), nbChance, wordUser or wordCompute (wordArray), motRandom or letterRandom (random), 
+    //2)nbPenality, message html of nbChance ($("#message").html('<h4>'+'nombre de coup : '+nbChance+'</h4>'))
     //3)and display hidden word ($("#hiddenWord").text(wordCompute.join(" ")))
     hideAndInit(10, wordCompute, letterRandom);
 
@@ -52,7 +52,7 @@ $(document).ready(function(){
 //////////////////////////////////////////////////////////////////////////////
 //verification de la lettre
 const verifieLettre = () => {
-            if(nbChange==0 || wordCompute.join("")==wordUser){
+            if(nbChance==0 || wordCompute.join("")==wordUser){
                 return;
             }
 
@@ -66,7 +66,7 @@ const verifieLettre = () => {
 ///////////////////////////////////////////////////////////////////////////////////
 //verification du statut du joueur : win or lost
 const statuJeu = () =>{
-    if (nbChange==0){
+    if (nbChance==0){
         console.log("perdu !"+"\n"+"C'était : "+wordUser);
         $("#message").html('<h4>'+"Dommage, il a raté ! C'était : "+'<span style="color: blue">'+wordUser+'</span>'+'</h4>');
 
@@ -103,7 +103,7 @@ const BestMachinesWinner = () =>{
         //Choix du nom de la machine gagnante
         indexArrayMachine = Math.floor(Math.random() * nameWinnerCompute.length);
 
-        bestPlayer[LastIndex].name = nameWinnerCompute[indexArrayMachine];
+        bestPlayer[LastIndex].name = nameWinnerCompute[indexArrayMachine].toLowerCase();
         timePlayingAndPenality(LastIndex);
 
         // //trie du tableau

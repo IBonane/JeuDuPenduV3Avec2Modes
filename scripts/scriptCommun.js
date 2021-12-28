@@ -39,7 +39,7 @@ const generateTableWinner = (size) =>{
 var lettreOk, nbPenality;
 var beginGameTime, timePlaying;
 var indexCanvaDuPendus = 0;
-var nbChange;
+var nbChance;
 var bestPlayer;
 
 //nameButtonPlay
@@ -73,20 +73,20 @@ const initWord = (word, wordHidden) =>{
 }
 
 ///////////////////////////////////////////////////
-//init : $(".hideCanva").hide(), nbChange, wordUser or wordCompute (wordArray), motRandom or letterRandom (random), 
-//nbPenality, message html of nbChange ($("#message").html('<h4>'+'nombre de coup : '+nbChange+'</h4>'))
+//init : $(".hideCanva").hide(), nbChance, wordUser or wordCompute (wordArray), motRandom or letterRandom (random), 
+//nbPenality, message html of nbChance ($("#message").html('<h4>'+'nombre de coup : '+nbChance+'</h4>'))
 //and display hidden word ($("#hiddenWord").text(wordCompute.join(" ")))
-const hideAndInit = (nbChangeValue, wordArray, randomWordOrLetter) =>{
+const hideAndInit = (nbChanceValue, wordArray, randomWordOrLetter) =>{
      //hideCanva
      $(".hideCanva").hide();
-     nbChange = nbChangeValue;
+     nbChance = nbChanceValue;
      wordArray = [];
      //countLetter = 0;
      randomWordOrLetter="";
      nbPenality = 0;
      //console.log("word utili : "+wordCompute);
          
-     $("#message").html('<h4>'+'nombre de coup : '+nbChange+'</h4>');
+     $("#message").html('<h4>'+'nombre de coup : '+nbChance+'</h4>');
  
      $("#hiddenWord").text(wordArray.join(" "));
 }
@@ -106,10 +106,10 @@ const checkLettersWordHidden = (letter, wordRandomOrUser, word, canva) =>{
     if(lettreOk == false){
         $("."+canva[indexCanvaDuPendus]).show();
         indexCanvaDuPendus++;
-        nbChange--;
+        nbChance--;
         nbPenality++;
-        console.log("nb change "+nbChange);
-        $("#message").html('<h4>'+'nombre de coup : '+nbChange+'</h4>');
+        console.log("nb change "+nbChance);
+        $("#message").html('<h4>'+'nombre de coup : '+nbChance+'</h4>');
     }
     console.log("user word "+word.join(" "));
     statuJeu();   
