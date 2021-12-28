@@ -1,6 +1,7 @@
 //desactivation du div input and winnerDiv
 hideDiv();
 $("#nameWinnerInputDiv").show();
+$("#nameWinnerInput").attr("placeholder", "Proposez un mot à la machine");
 
 //change tewt of replay button : $("#play").text("Essayer un autre mot");
 buttonRePlay();
@@ -29,10 +30,11 @@ $(document).ready(function(){
     //1)init : $(".hideCanva").hide(), nbChange, wordUser or wordCompute (wordArray), motRandom or letterRandom (random), 
     //2)nbPenality, message html of nbChange ($("#message").html('<h4>'+'nombre de coup : '+nbChange+'</h4>'))
     //3)and display hidden word ($("#hiddenWord").text(wordCompute.join(" ")))
-    hideAndInit(5, wordCompute, letterRandom);
+    hideAndInit(10, wordCompute, letterRandom);
 
     $("#nameWinnerInput").change(function(){
-        wordUser = $("#nameWinnerInput").val();
+        let inputUser = $("#nameWinnerInput").val();
+        wordUser = inputUser.toUpperCase();
         console.log("lettre : "+wordUser);
         $("#nameWinnerInput").val("");
         $("#nameWinnerInputDiv").hide();
@@ -58,7 +60,7 @@ const verifieLettre = () => {
             letterRandom = alphabet[indexArrayAlphabet];
             console.log("lettre ordi : "+letterRandom)
             
-            checkLettersWordHidden(letterRandom, wordUser, wordCompute); 
+            checkLettersWordHidden(letterRandom, wordUser, wordCompute, canvaDuPendusModeOrdi); 
 }
 
 ///////////////////////////////////////////////////////////////////////////////////

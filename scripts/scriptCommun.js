@@ -92,7 +92,7 @@ const hideAndInit = (nbChangeValue, wordArray, randomWordOrLetter) =>{
 }
 
 //sous fonction de verification : parcour des lettres du mots a trouvé
-const checkLettersWordHidden = (letter, wordRandomOrUser, word) =>{
+const checkLettersWordHidden = (letter, wordRandomOrUser, word, canva) =>{
     lettreOk = false;
     for(let index=0; index < wordRandomOrUser.length; index++){
         if(letter == wordRandomOrUser[index]){
@@ -104,7 +104,7 @@ const checkLettersWordHidden = (letter, wordRandomOrUser, word) =>{
     }
 
     if(lettreOk == false){
-        $("."+canvaDuPendus[indexCanvaDuPendus]).show();
+        $("."+canva[indexCanvaDuPendus]).show();
         indexCanvaDuPendus++;
         nbChange--;
         nbPenality++;

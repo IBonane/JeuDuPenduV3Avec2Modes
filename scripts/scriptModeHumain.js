@@ -133,7 +133,7 @@ const verifieLettre = () => {
         if(letter == motRandom[index])
             letterWinDisable.css("background-color", "green");
 
-    checkLettersWordHidden(letter, motRandom, wordUser); 
+    checkLettersWordHidden(letter, motRandom, wordUser, canvaDuPendusModeHumain); 
     //         console.log("index : "+index+" : "+motRandom[index]);
     //         wordUser[index] = motRandom[index];
     //         lettreOk = true;

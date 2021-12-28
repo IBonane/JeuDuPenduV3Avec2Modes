@@ -23,10 +23,13 @@ var word = ["acrobate", "acrobatie", "acrobatique", "acrostiche", "acte", "actes
 
 
 
-var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+var alphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 
 
-var canvaDuPendus = ['support', 'tete', 'corps', 'bras', 'jambes'];
+var canvaDuPendusModeHumain = ['support', 'tete', 'corps', 'bras', 'jambes'];
+
+var canvaDuPendusModeOrdi = ['support1', 'support2','support3', 'support4', 
+                            'tete', 'corps', 'bras1', 'bras2', 'jambes1', 'jambes2'];
 
 var nameWinnerCompute = ['Amazon', 'Apple', 'Microsoft',
                          'IBM', 'SuperComputer', 'Tesla',
