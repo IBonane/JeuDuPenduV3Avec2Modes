@@ -41,4 +41,9 @@
       padding: 5px 10px;
       text-align: center;
     }  
+
+    .footPage{
+        margin: 0 0 50px 20px;
+        font-size: 16px;
+    }
 }

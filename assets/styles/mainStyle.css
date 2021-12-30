@@ -64,3 +64,44 @@ div.lastDiv{
     color: orange;
 }
 
+/*Mobile*/
+@media only screen and (max-width: 767px) {
+    #title{
+        margin-top: 20px;
+        width: 100%; 
+        margin-left: 0;
+    }
+    #presentation{
+        width: 80%; 
+        margin-left: 10%;
+        font-size: 20px;
+    }
+    .gridItems img{
+        width: 60%;
+        margin-left: 20%;
+    }
+    .versPageJeu{
+        width: 60%; 
+        margin-left: 20%;
+    }
+    
+    .versPageJeu h4{
+        font-size: 20px;
+    }
+    
+    .versPageJeu p{
+        font-size: 18px;
+    }
+    
+    .versPageJeu a button{
+        font-size: 18px;
+        width: 80px;
+    }
+    div.lastDiv{
+        margin-bottom: 100px;
+    } 
+
+    .footPage{
+        margin: 0 0 50px 20px;
+    }
+}
